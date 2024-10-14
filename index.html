@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumería Susi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#carrito">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="section">
+        <h1>Bienvenidos a Perfumería Susi</h1>
+        <div class="image-gallery">
+            <img src="image1.jpg" alt="Perfume 1" />
+            <img src="image2.jpg" alt="Perfume 2" />
+            <img src="image3.jpg" alt="Perfume 3" />
+        </div>
+    </section>
+
+    <section id="productos" class="section">
+        <h1>Productos</h1>
+        <div class="product-list">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="perfume1.jpg" alt="Perfume A">
+                <h3>Perfume A</h3>
+                <p>Un perfume suave y fresco para todo el día.</p>
+                <p>Precio: $1000</p>
+                <button onclick="addToCart('Perfume A', 1000)">Agregar al carrito</button>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="perfume2.jpg" alt="Perfume B">
+                <h3>Perfume B</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume B', 1500)">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="carrito" class="section">
+        <h1>Carrito de Compras</h1>
+        <div id="cart-items">
+            <p>Tu carrito está vacío.</p>
+        </div>
+        <button id="checkout-btn">Pagar con Mercado Pago</button>
+    </section>
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
