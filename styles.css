@@ -44,6 +44,14 @@ header nav ul li a {
         justify-content: center; /* Centra el contenido horizontalmente */
         align-items: center; /* Centra el contenido verticalmente */
     }
+    @media (max-width: 768px) {
+        .carousel-container {
+            height: 300px; /* Reducción de altura para pantallas más pequeñas */
+        }
+        @media (max-width: 480px) {
+            .carousel-container {
+                height: 250px; /* Reduce aún más la altura para móviles muy pequeños */
+            }
 
 .carousel {
     display: flex;
