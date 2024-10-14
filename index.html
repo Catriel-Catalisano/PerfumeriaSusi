@@ -19,31 +19,84 @@
 
     <section id="inicio" class="section">
         <h1>Bienvenidos a Perfumería Susi</h1>
-        <div class="image-gallery">
-            <img src="image1.jpg" alt="Perfume 1" />
-            <img src="image2.jpg" alt="Perfume 2" />
-            <img src="image3.jpg" alt="Perfume 3" />
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="POLO2" alt="Perfume 1" />
+                <img src="POLO1" alt="Perfume 2" />
+                <img src="BOSS 1" alt="Perfume 3" />
+                <img src="BOSS2.png" alt="Perfume 4" />
+                <img src="BOSS CARTERA.webp" alt="Perfume 5" />
+                <img src="BROSS1.webp" alt="Perfume 6" />
+                <img src="BROSS2" alt="Perfume 7" />
+                <img src="BROSS3" alt="Perfume 8" />
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </div>
     </section>
+    
 
     <section id="productos" class="section">
         <h1>Productos</h1>
         <div class="product-list">
             <!-- Producto 1 -->
             <div class="product-card">
-                <img src="perfume1.jpg" alt="Perfume A">
-                <h3>Perfume A</h3>
+                <img src="BOSS 1" alt="Perfume-Boos-intense-blue">
+                <h3>Perfume Boos intense blue</h3>
                 <p>Un perfume suave y fresco para todo el día.</p>
                 <p>Precio: $1000</p>
-                <button onclick="addToCart('Perfume A', 1000)">Agregar al carrito</button>
+                <button onclick="addToCart('Perfume Boos intense blue', 1000)">Agregar al carrito</button>
             </div>
             <!-- Producto 2 -->
             <div class="product-card">
-                <img src="perfume2.jpg" alt="Perfume B">
-                <h3>Perfume B</h3>
+                <img src="BOSS2.png" alt="Perfume-Boos-IntenseLumiere">
+                <h3>Perfume Boos Intense Lumiere</h3>
                 <p>Un perfume floral para ocasiones especiales.</p>
                 <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume B', 1500)">Agregar al carrito</button>
+                <button onclick="addToCart('Perfume Boos Intense Lumiere', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="BOSS CARTERA.webp" alt="Perfume-Boos-Cartera">
+                <h3>Perfume Boos Cartera</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Boos Cartera', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="BROSS1.webp" alt="Perfume-Bross-Blue">
+                <h3>Perfume Bross Blue</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Bross Blue', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="BROSS2" alt="Perfume-bross-classic">
+                <h3>Perfume Bross Classic</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Bross Classic', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="BROSS3" alt="Perfume-Bross-Warrior">
+                <h3>Perfume Bross Warrior</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Bross Warrior', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="POLO1" alt="Perfume-Polo-Legend">
+                <h3>Perfume Polo Legend</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Polo Legend', 1500)">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="POLO2" alt="Perfume-Polo-Legend-spirit">
+                <h3>Perfume Polo Legend Spirit</h3>
+                <p>Un perfume floral para ocasiones especiales.</p>
+                <p>Precio: $1500</p>
+                <button onclick="addToCart('Perfume Polo Legend Spirit', 1500)">Agregar al carrito</button>
             </div>
         </div>
     </section>

@@ -8,6 +8,32 @@ function addToCart(name, price) {
     updateCart();
 }
 
+let index = 0;
+const intervalTime = 3000; // Tiempo en milisegundos para cambiar automáticamente (3 segundos)
+
+function moveSlide(step) {
+    const slides = document.querySelectorAll('.carousel img');
+    const totalSlides = slides.length;
+    index += step;
+
+    if (index < 0) {
+        index = totalSlides - 1; // Regresa al último slide si está en el primero
+    } else if (index >= totalSlides) {
+        index = 0; // Regresa al primer slide si está en el último
+    }
+
+    const carousel = document.querySelector('.carousel');
+    carousel.style.transform = `translateX(${-index * 100}%)`;
+}
+
+// Cambia automáticamente el slide
+function autoSlide() {
+    moveSlide(1); // Mueve hacia el siguiente slide
+}
+
+// Establecer el intervalo de cambio automático
+setInterval(autoSlide, intervalTime);
+
 // Función para actualizar la vista del carrito
 function updateCart() {
     const cartItemsDiv = document.getElementById('cart-items');
