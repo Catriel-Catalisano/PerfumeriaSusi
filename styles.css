@@ -48,11 +48,12 @@ header nav ul li a {
         .carousel-container {
             height: 300px; /* Reducción de altura para pantallas más pequeñas */
         }
+    }
         @media (max-width: 480px) {
             .carousel-container {
                 height: 250px; /* Reduce aún más la altura para móviles muy pequeños */
             }
-
+        }
 .carousel {
     display: flex;
     transition: transform 0.5s ease;
@@ -62,6 +63,64 @@ header nav ul li a {
     width: 100%;
     height: max-content;
 }
+/* Diseño general para la sección */
+#carrito {
+    background: linear-gradient(to right, #f7c9d1, #f7d5a2);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Título */
+#carrito h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Estilo para los elementos del carrito */
+#cart-items {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+#cart-items p {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Estilo para el botón */
+#checkout-btn {
+    background-color: #00a859; /* color Mercado Pago */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#checkout-btn:hover {
+    background-color: #008c44;
+    transform: scale(1.05);
+}
+
+#checkout-btn:focus {
+    outline: none;
+}
+
 .prev {
     left: 10px;
     position: absolute;
@@ -139,4 +198,103 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+}
+/* Estilo para la sección de productos */
+#productos {
+    background-color: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Título */
+#productos h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Contenedor de los productos */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Estilo para cada tarjeta de producto */
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de hover sobre las tarjetas */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del producto */
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Nombre y descripción del producto */
+.product-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.product-card p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el precio */
+.product-card p:last-child {
+    color: #d9534f;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Estilo del botón */
+.product-card button {
+    background-color: #00a859; /* color de Mercado Pago */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Efecto hover en el botón */
+.product-card button:hover {
+    background-color: #008c44;
+    transform: scale(1.05);
+}
+
+/* Efecto focus en el botón */
+.product-card button:focus {
+    outline: none;
 }
