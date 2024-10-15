@@ -405,45 +405,37 @@ h1 {
     outline: none;
 }
 /* Footer */
-footer {
-    background-color: #000000;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
+/* Estilos para hacer las imágenes responsivas */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
 }
 
+/* Footer general styling */
 .footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-social a {
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #000000;
     color: white;
-    font-size: 1.2rem;
+}
+
+.footer-social, .footer-contact, .footer-whatsapp {
+    flex: 1;
+}
+
+.footer-social a, .footer-whatsapp a {
     text-decoration: none;
-    display: flex;
-    align-items: center;
+    color: white;
 }
 
-.footer-social a:hover {
-    color: #00a859;
+.footer-social a:hover, .footer-whatsapp a:hover {
+    color: #25D366; /* WhatsApp green */
 }
 
-.footer-social i {
-    margin-right: 10px;
-}
-
-.footer-contact {
-    font-size: 1rem;
-    margin-top: 20px;
-}
-
-.footer-contact p {
-    margin: 5px 0;
-}
-
-.footer-contact strong {
-    font-weight: bold;
+.footer-social img, .footer-whatsapp img {
+    margin-left: 10px;
+    vertical-align: middle;
 }
