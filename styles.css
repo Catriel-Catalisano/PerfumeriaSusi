@@ -1,6 +1,5 @@
-/* Estilos generales */
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -15,11 +14,12 @@ header {
 }
 
 #image-carousel {
-    margin-bottom: 50px; /* Espacio entre el carrusel y el siguiente elemento */
+    margin-bottom: 30px; /* Espacio entre el carrusel y el siguiente elemento */
+    width: auto;
 }
 
 #contacto {
-    margin-top: 50px; /* Espacio en la parte superior de la sección de contacto */
+    margin-top: 0px; /* Espacio en la parte superior de la sección de contacto */
 }
 
 header nav ul {
@@ -81,52 +81,32 @@ header nav ul li a {
 }
 
 /* Estilo para centrar el carrusel */
-#image-carousel {
-    position: relative; /* Cambiado de absolute a relative */
-    margin: 50px auto; /* Añadido un margen superior e inferior */
-    width: 600px; /* Tamaño mediano */
-    height: 300px;
+/* Estilo del carrusel */
+.carousel {
+    width: 50%;
+    max-width: 1100px;
+    margin: 0 auto;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo para las imágenes */
-#image-carousel img {
     position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 200%;
+    animation: slide 10s infinite;
+}
+
+.carousel-slide img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    animation: fadeAnimation 9s infinite;
 }
 
-/* Animación de aparición y desaparición, cada imagen se muestra una a la vez */
-@keyframes fadeAnimation {
-    0%, 25% {
-        opacity: 1; /* Imagen visible */
-    }
-    33.33%, 100% {
-        opacity: 0; /* Imagen oculta */
-    }
-}
-
-/* Control de las imágenes para que cambien de manera secuencial */
-#image-carousel img:nth-child(1) {
-    animation-delay: 0s;
-}
-
-#image-carousel img:nth-child(2) {
-    animation-delay: 3s;
-}
-
-#image-carousel img:nth-child(3) {
-    animation-delay: 6s;
+@keyframes slide {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(0); }
 }
 
 /* Contact */
@@ -195,36 +175,6 @@ h1 {
     color: #333;
 }
 
-.product-list {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.product-card {
-    background-color: #fff;
-    padding: 15px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 30%;
-}
-
-.product-card img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.product-card button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
 #cart-items {
     margin-top: 20px;
 }
@@ -239,11 +189,127 @@ h1 {
     margin-top: 20px;
 }
 
-/* Estilo para la sección de productos */
 #productos {
-    background-color: #f5f5f5;
-    padding: 60px 20px;
+    padding: 40px 20px;
+    background-color: #fff;
     text-align: center;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.toggle-section {
+    background-color: #00a859;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-section:hover {
+    background-color: #008c44;
+    transform: scale(1.05);
+}
+
+.toggle-section:focus {
+    outline: none;
+}
+
+.product-slider {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product-card h3 {
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    margin-bottom: 15px;
+}
+
+/* Estilo para el precio */
+.product-card p:last-child {
+    color: #d9534f;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Estilo del botón */
+.product-card button {
+    background-color: #00a859; /* color de Mercado Pago */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Efecto hover en el botón */
+.product-card button:hover {
+    background-color: #008c44;
+    transform: scale(1.05);
+}
+
+/* Efecto focus en el botón */
+.product-card button:focus {
+    outline: none;
+}
+
+/* Ocultar los productos inicialmente */
+.product-slider {
+    display: none; /* Inicialmente está oculto */
+    margin-top: 10px;
+}
+
+/* Cuando se añade la clase 'active', mostrar los productos */
+.product-slider.active {
+    display: block; /* Se muestran los productos cuando se activa */
+}
+
+/* Inicialmente oculta el contenido de cada sección */
+.collapsible-content {
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Estilo del título cuando se puede colapsar */
+.collapsible {
+    cursor: pointer;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
+
+/* Cambia el fondo cuando se abre */
+.collapsible.active {
+    background-color: #ccc;
 }
 
 /* Título */
@@ -277,7 +343,7 @@ h1 {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Efecto de hover sobre las tarjetas */
+/* Efecto hover sobre las tarjetas */
 .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -338,86 +404,46 @@ h1 {
 .product-card button:focus {
     outline: none;
 }
-
-/* Estilos generales del footer */
-#footer {
-    background-color: #000000;
-    color: #fff;
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
     padding: 40px 20px;
     text-align: center;
 }
 
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-}
-
-/* Sección de redes sociales */
-.footer-social {
-    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .footer-social a {
-    color: #fff;
-    font-size: 1.5rem;
+    color: white;
+    font-size: 1.2rem;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.footer-social i {
-    font-size: 2rem;
 }
 
 .footer-social a:hover {
-    color: #ffcc00; /* Color al pasar el mouse */
+    color: #00a859;
 }
 
-/* Sección de contacto (direcciones y teléfono) */
+.footer-social i {
+    margin-right: 10px;
+}
+
+.footer-contact {
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
 .footer-contact p {
     margin: 5px 0;
-    font-size: 1rem;
 }
 
 .footer-contact strong {
-    font-size: 1.2rem;
-    color: #ffcc00; /* Color destacado para los títulos */
-}
-
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .footer-social, .footer-contact {
-        margin-bottom: 20px;
-    }
-
-    /* Ajustes en el carrusel */
-    #image-carousel {
-        width: 90%;
-        height: 200px;
-    }
-
-    /* Ajustes en las tarjetas de productos */
-    .product-list {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    }
-
-    /* Ajustes en las secciones de carrito y productos */
-    #carrito, #productos {
-        padding: 20px;
-    }
-
-    /* Ajustes en los botones */
-    .contact-form button, .product-card button {
-        width: 100%;
-    }
+    font-weight: bold;
 }

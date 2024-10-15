@@ -9,89 +9,85 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
             </ul>
         </nav>
     </header>
-    <body>
-    <section id="productos" class="section">
-        <h1>Productos</h1>
-        <div class="product-list">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <img src="BOSS 1" alt="Perfume-Boos-intense-blue">
-                <h3>Perfume Boos intense blue</h3>
-                <p>Un perfume suave y fresco para todo el día.</p>
-                <p>Precio: $1</p>
-                <button onclick="addToCart('Perfume Boos intense blue', 1)">Agregar al carrito</button>
-            </div>
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <img src="BOSS2.png" alt="Perfume-Boos-IntenseLumiere">
-                <h3>Perfume Boos Intense Lumiere</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Boos Intense Lumiere', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="BOSS CARTERA.webp" alt="Perfume-Boos-Cartera">
-                <h3>Perfume Boos Cartera</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Boos Cartera', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="BROSS1.webp" alt="Perfume-Bross-Blue">
-                <h3>Perfume Bross Blue</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Bross Blue', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="BROSS2" alt="Perfume-bross-classic">
-                <h3>Perfume Bross Classic</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Bross Classic', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="BROSS3" alt="Perfume-Bross-Warrior">
-                <h3>Perfume Bross Warrior</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Bross Warrior', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="POLO1" alt="Perfume-Polo-Legend">
-                <h3>Perfume Polo Legend</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Polo Legend', 1500)">Agregar al carrito</button>
-            </div>
-            <div class="product-card">
-                <img src="POLO2" alt="Perfume-Polo-Legend-spirit">
-                <h3>Perfume Polo Legend Spirit</h3>
-                <p>Un perfume floral para ocasiones especiales.</p>
-                <p>Precio: $1500</p>
-                <button onclick="addToCart('Perfume Polo Legend Spirit', 1500)">Agregar al carrito</button>
-            </div>
-        </div>
-    </section>
-    <section id="carrito" class="section">
-        <h1>Carrito de Compras</h1>
-        <div id="cart-items">
-            <p>Tu carrito está vacío.</p>
-            <ul id="cart-list"></ul> <!-- Aquí se agregarán los productos -->
-        </div>
-        <button id="checkout-btn">Pagar con Mercado Pago</button>
-    </section>
+
+    <main>
+        <section id="productos">
+            <h1>Nuestros Productos</h1>
         
+            <!-- Sección Hombres -->
+            <div class="section">
+                <button class="toggle-section">Hombres</button>
+                <div class="product-slider">
+                    <div class="product-card">
+                        <h3>Perfume Hombre 1</h3>
+                        <p>Precio: $1500</p>
+                        <button class="buy-btn" data-id="h1">Comprar</button>
+                    </div>
+                    <div class="product-card">
+                        <h3>Perfume Hombre 2</h3>
+                        <p>Precio: $1600</p>
+                        <button class="buy-btn" data-id="h2">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <button class="toggle-section">Mujeres</button>
+                <div class="product-slider">
+                    <div class="product-card">
+                        <h3>Perfume Mujer 1</h3>
+                        <p>Precio: $1700</p>
+                        <button class="buy-btn" data-id="m1">Comprar</button>
+                    </div>
+                    <div class="product-card">
+                        <h3>Perfume Mujer 2</h3>
+                        <p>Precio: $1800</p>
+                        <button class="buy-btn" data-id="m2">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <button class="toggle-section">Niños</button>
+                <div class="product-slider">
+                    <div class="product-card">
+                        <h3>Perfume Niño 1</h3>
+                        <p>Precio: $1200</p>
+                        <button class="buy-btn" data-id="n1">Comprar</button>
+                    </div>
+                    <div class="product-card">
+                        <h3>Perfume Niño 2</h3>
+                        <p>Precio: $1300</p>
+                        <button class="buy-btn" data-id="n2">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+
+        </section>
+        
+
+        <section id="carrito" class="section">
+            <h1>Carrito de Compras</h1>
+            <div id="cart-items"></div>
+<p>Total de productos: <span id="total-items"></span></p>
+<p>Total a pagar: $<span id="total-price"></span></p>
+<button id="checkout-btn">Pagar</button>
+            <button id="checkout-btn">Pagar con Mercado Pago</button>
+        </section>
+    </main>
+
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
     
