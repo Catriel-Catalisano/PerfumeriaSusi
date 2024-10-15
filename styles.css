@@ -521,39 +521,21 @@ h1 {
     max-width: 100%;
     height: auto;
 }
-/* Contenedor principal del formulario */
+/* Estilo para hacer el iframe responsivo */
 .form-section {
-    max-width: 800px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  
-    /* Para centrar la sección en el medio de la pantalla */
+    position: relative;
+    padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #f0f0f0;
+}
+
+.form-section iframe {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Estilo del título dentro de la sección del formulario */
-  .form-section h2 {
-    font-size: 26px;
-    color: #1a73e8;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #1a73e8;
-    display: inline-block;
-    padding-bottom: 10px;
-  }
-  
-  /* Estilo para el iframe del formulario */
-  .form-section iframe {
-    border: none;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    min-height: 800px;
-    max-height: 1354px;
-  }
-  
+    height: 100%;
+    border: none;
+}
