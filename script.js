@@ -2,52 +2,49 @@
 let cart = [];
 
 // Función para agregar productos al carrito
-function addToCart(name, price) {
-    const product = { name, price };
-    cart.push(product);
-    updateCart();
-}
+function addToCart(name, price, description) {
+    // Verificar si el producto ya existe en el carrito
+    const existingProduct = cart.find(product => product.name === name);
 
-let index = 0;
-const intervalTime = 3000; // Tiempo en milisegundos para cambiar automáticamente (3 segundos)
-
-function moveSlide(step) {
-    const slides = document.querySelectorAll('.carousel img');
-    const totalSlides = slides.length;
-    index += step;
-
-    if (index < 0) {
-        index = totalSlides - 1; // Regresa al último slide si está en el primero
-    } else if (index >= totalSlides) {
-        index = 0; // Regresa al primer slide si está en el último
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Si ya está en el carrito, aumenta la cantidad
+    } else {
+        const product = { name, price, description, quantity: 1 };
+        cart.push(product); // Agregar nuevo producto
     }
 
-    const carousel = document.querySelector('.carousel');
-    carousel.style.transform = `translateX(${-index * 100}%)`;
+    updateCart(); // Actualizar el carrito en la interfaz
 }
-
-// Cambia automáticamente el slide
-function autoSlide() {
-    moveSlide(1); // Mueve hacia el siguiente slide
-}
-
-// Establecer el intervalo de cambio automático
-setInterval(autoSlide, intervalTime);
 
 // Función para actualizar la vista del carrito
 function updateCart() {
     const cartItemsDiv = document.getElementById('cart-items');
+    const totalItemsElement = document.getElementById('total-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Si el carrito está vacío
     if (cart.length === 0) {
-        cartItemsDiv.innerHTML = '<p>Tu carrito está vacío.</p>';
+        cartItemsDiv.innerHTML = '<p id="empty-message">Tu carrito está vacío.</p>';
     } else {
         cartItemsDiv.innerHTML = '<h2>Productos en tu carrito:</h2>';
+        let totalItems = 0;
+        let totalPrice = 0;
+
         cart.forEach(product => {
+            totalItems += product.quantity;
+            totalPrice += product.price * product.quantity;
+
             cartItemsDiv.innerHTML += `
                 <div>
-                    <p>${product.name} - $${product.price}</p>
+                    <p><strong>${product.name}</strong> (${product.quantity} x $${product.price})</p>
+                    <p><small>${product.description}</small></p>
                 </div>
             `;
         });
+
+        // Actualizar los totales en la interfaz
+        totalItemsElement.textContent = totalItems;
+        totalPriceElement.textContent = totalPrice.toFixed(2); // Formato con dos decimales
     }
 }
 
@@ -70,7 +67,7 @@ function createPreference() {
     const items = cart.map(product => ({
         title: product.name,
         unit_price: product.price,
-        quantity: 1
+        quantity: product.quantity
     }));
 
     fetch("https://api.mercadopago.com/checkout/preferences", {
@@ -107,4 +104,3 @@ function createPreference() {
         alert('Hubo un problema al procesar el pago.');
     });
 }
-

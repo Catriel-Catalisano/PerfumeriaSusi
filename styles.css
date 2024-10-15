@@ -13,6 +13,13 @@ header {
     text-align: center;
 }
 
+#image-carousel {
+    margin-bottom: 50px; /* Espacio entre el carrusel y el siguiente elemento */
+}
+
+#contacto {
+    margin-top: 50px; /* Espacio en la parte superior de la sección de contacto */
+}
 
 header nav ul {
     list-style-type: none;
@@ -35,34 +42,7 @@ header nav ul li a {
     background-color: white;
     border-radius: 8px;
 }
-.carousel-container {
-        position: relative;
-        width: 70%;
-        height: 60rem; /* Ajusta la altura según tus necesidades */
-        overflow: hidden; /* Oculta las imágenes fuera del área visible */
-        display: flex;
-        justify-content: center; /* Centra el contenido horizontalmente */
-        align-items: center; /* Centra el contenido verticalmente */
-    }
-    @media (max-width: 768px) {
-        .carousel-container {
-            height: 300px; /* Reducción de altura para pantallas más pequeñas */
-        }
-    }
-        @media (max-width: 480px) {
-            .carousel-container {
-                height: 250px; /* Reduce aún más la altura para móviles muy pequeños */
-            }
-        }
-.carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-    object-fit: cover;
-}
-.carousel img {
-    width: 100%;
-    height: max-content;
-}
+
 /* Diseño general para la sección */
 #carrito {
     background: linear-gradient(to right, #f7c9d1, #f7d5a2);
@@ -99,6 +79,95 @@ header nav ul li a {
     font-weight: 600;
 }
 
+/* Estilo para centrar el carrusel */
+#image-carousel {
+    position: relative; /* Cambiado de absolute a relative */
+    margin: 50px auto; /* Añadido un margen superior e inferior */
+    width: 600px; /* Tamaño mediano */
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para las imágenes */
+#image-carousel img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation: fadeAnimation 9s infinite;
+}
+
+/* Animación de aparición y desaparición, cada imagen se muestra una a la vez */
+@keyframes fadeAnimation {
+    0%, 25% {
+        opacity: 1; /* Imagen visible */
+    }
+    33.33%, 100% {
+        opacity: 0; /* Imagen oculta */
+    }
+}
+
+/* Control de las imágenes para que cambien de manera secuencial */
+#image-carousel img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+#image-carousel img:nth-child(2) {
+    animation-delay: 3s;
+}
+
+#image-carousel img:nth-child(3) {
+    animation-delay: 6s;
+}
+
+/* Contact */
+.contact {
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #00a859;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #008c44;
+}
+
 /* Estilo para el botón */
 #checkout-btn {
     background-color: #00a859; /* color Mercado Pago */
@@ -121,40 +190,14 @@ header nav ul li a {
     outline: none;
 }
 
-.prev {
-    left: 10px;
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transform: translateY(-50%);
-}
 
-.next {
-    right: 10px;
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transform: translateY(-50%);
-}
+
+
 h1 {
     color: #333;
 }
 
-.image-gallery img {
-    width: 30%;
-    margin: 10px;
-    border-radius: 8px;
-}
+
 
 .product-list {
     display: flex;
@@ -297,4 +340,65 @@ h1 {
 /* Efecto focus en el botón */
 .product-card button:focus {
     outline: none;
+}
+/* Estilos generales del footer */
+#footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Sección de redes sociales */
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-social i {
+    font-size: 2rem;
+}
+
+.footer-social a:hover {
+    color: #ffcc00; /* Color al pasar el mouse */
+}
+
+/* Sección de contacto (direcciones y teléfono) */
+.footer-contact p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.footer-contact strong {
+    font-size: 1.2rem;
+    color: #ffcc00; /* Color destacado para los títulos */
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-social, .footer-contact {
+        margin-bottom: 20px;
+    }
 }
