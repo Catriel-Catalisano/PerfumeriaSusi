@@ -3,9 +3,9 @@ let cart = [];
 
 // Productos de ejemplo
 const productos = {
-    'h1': { id: 'h1', name: 'Perfume Hombre 1', price: 1500 },
-    'h2': { id: 'h2', name: 'Perfume Hombre 2', price: 1600 },
-    'm1': { id: 'm1', name: 'Perfume Mujer 1', price: 1700 },
+    'h1': { id: 'h1', name: 'Perfume Hombre Boos Intense Blue', price: 1 },
+    'h2': { id: 'h2', name: 'Perfume Hombre Bross London Blue', price: 2 },
+    'm1': { id: 'm1', name: 'Perfume Mujer Boss Cartera', price: 1 },
     'm2': { id: 'm2', name: 'Perfume Mujer 2', price: 1800 },
     'n1': { id: 'n1', name: 'Perfume Niño 1', price: 1200 },
     'n2': { id: 'n2', name: 'Perfume Niño 2', price: 1300 }
