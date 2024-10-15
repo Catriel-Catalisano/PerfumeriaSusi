@@ -238,8 +238,8 @@ function createPreference() {
     });
 }
 
-// Al hacer clic en "Pagar"
-document.getElementById("pagar-btn").addEventListener('click', function () {
+// Al hacer clic en el botón "Pagar con Mercado Pago"
+document.getElementById("checkout-btn").addEventListener('click', function () {
     if (cart.length > 0) {
         createPreference(); // Llamamos a la función para crear la preferencia y realizar el pago
     } else {
