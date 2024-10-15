@@ -416,7 +416,7 @@ h1 {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
     background-color: #000000;
     color: white;
