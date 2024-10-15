@@ -39,17 +39,30 @@ function updateCart() {
 
     // Mostrar productos en el carrito
     cart.forEach(product => {
-        totalItems += product.quantity;
-        totalPrice += product.price * product.quantity;
+        if (product.id !== 'envio') {  // Excluimos el ítem "Envío" del cálculo de productos
+            totalItems += product.quantity;
+            totalPrice += product.price * product.quantity;
 
-        cartItemsDiv.innerHTML += `
-            <div>
-                <p><strong>${product.name}</strong> (${product.quantity} x $${product.price})</p>
-            </div>
-        `;
+            cartItemsDiv.innerHTML += `
+                <div>
+                    <p><strong>${product.name}</strong> (${product.quantity} x $${product.price})</p>
+                </div>
+            `;
+        }
     });
 
-    // Mostrar totales
+    // Mostrar el ítem de "Envío" si está presente
+    const envioItem = cart.find(item => item.id === 'envio');
+    if (envioItem) {
+        cartItemsDiv.innerHTML += `
+            <div>
+                <p><strong>Envío</strong> (${envioItem.ubicacion}): $${envioItem.price}</p>
+            </div>
+        `;
+        totalPrice += envioItem.price;  // Agregar el precio de envío al total
+    }
+
+    // Mostrar totales de productos
     totalItemsElement.textContent = totalItems;
     totalPriceElement.textContent = totalPrice.toFixed(2);
 }
@@ -78,18 +91,119 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCart();
 });
 
-// Integración con Mercado Pago
+// Precio base de los productos en el carrito (esto debe ser dinámico, se pone un ejemplo fijo aquí)
+let costoEnvio = 0;  // Costo inicial de envío
+let ubicacionEnvio = '';  // Almacenamos la ubicación seleccionada
+
+// Elementos DOM
+const ubicacionSelect = document.getElementById("ubicacion");
+const costoEnvioElement = document.getElementById("precio-envio");
+const actualizarCarritoBtn = document.getElementById("actualizar-carrito");
+const totalPriceElement = document.getElementById("total-price");
+
+// Función para calcular el costo de envío según la ubicación seleccionada
+function calcularCostoEnvio(ubicacion) {
+    switch (ubicacion) {
+        case "buenos-aires":
+            return 500;
+        case "cordoba":
+            return 700;
+        case "rosario":
+            return 600;
+        default:
+            return 0;
+    }
+}
+
+// Función para actualizar el precio total (productos + costo de envío)
+function actualizarTotalCarrito() {
+    let totalPrice = 0;
+
+    // Recalcular el precio total de los productos en el carrito
+    cart.forEach(product => {
+        if (product.id !== 'envio') {  // Excluimos el ítem "Envío" del cálculo de productos
+            totalPrice += product.price * product.quantity;
+        }
+    });
+
+    // Agregar el costo de envío al precio total (solo si existe)
+    if (costoEnvio > 0) {
+        totalPrice += costoEnvio;
+    }
+
+    totalPriceElement.textContent = totalPrice.toFixed(2);  // Mostrar el total con envío
+}
+
+// Escucha el evento de envío del formulario para calcular el costo de envío
+document.getElementById("envio-form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevenir que se recargue la página
+
+    // Obtener la ubicación seleccionada
+    const ubicacion = ubicacionSelect.value;
+    ubicacionEnvio = ubicacion;  // Almacenamos la ubicación seleccionada
+
+    // Calcular el costo de envío
+    costoEnvio = calcularCostoEnvio(ubicacion);
+
+    // Mostrar el costo de envío
+    costoEnvioElement.textContent = costoEnvio;
+
+    // Verificar si ya existe el ítem de "Envío" en el carrito
+    const existingShippingItem = cart.find(item => item.id === 'envio');
+    
+    if (existingShippingItem) {
+        // Si existe, solo actualizamos el valor del envío y la ubicación (no agregar de nuevo)
+        existingShippingItem.price = costoEnvio;
+        existingShippingItem.ubicacion = ubicacionEnvio;  // Actualizar la ubicación
+        existingShippingItem.quantity = 1;  // Asegurarnos de que no se multiplica
+    } else {
+        // Si no existe, agregamos el ítem de "Envío"
+        const envio = {
+            id: 'envio',
+            name: 'Envío',
+            price: costoEnvio,
+            quantity: 1,
+            ubicacion: ubicacionEnvio  // Almacenamos la ubicación seleccionada en el carrito
+        };
+        cart.push(envio);  // Agregar el ítem de envío al carrito
+    }
+
+    // Actualizar el carrito
+    updateCart();
+    actualizarTotalCarrito();  // Actualizar el total con el costo de envío
+});
+
+// Evento para actualizar el carrito
+actualizarCarritoBtn.addEventListener("click", function () {
+    if (ubicacionSelect.value) {
+        alert("El carrito se ha actualizado con el nuevo costo de envío.");
+    } else {
+        alert("Por favor, selecciona una ubicación para calcular el costo de envío.");
+    }
+});
+
+// Inicialización de MercadoPago
 const mp = new MercadoPago('APP_USR-4d838003-4cfd-47a3-8010-0ec3c8c40150', {
     locale: 'es-AR'
 });
 
 // Función para crear la preferencia de pago
 function createPreference() {
-    const items = cart.map(product => ({
+    const items = cart.map(product => (product.id !== 'envio') ? {
         title: product.name,
         unit_price: product.price,
         quantity: product.quantity
-    }));
+    } : null).filter(item => item !== null);
+
+    // Agregar el ítem de "Envío" a los productos
+    const envioItem = cart.find(item => item.id === 'envio');
+    if (envioItem) {
+        items.push({
+            title: 'Envío',
+            unit_price: envioItem.price,
+            quantity: 1
+        });
+    }
 
     fetch("https://api.mercadopago.com/checkout/preferences", {
         method: "POST",
@@ -120,16 +234,15 @@ function createPreference() {
         });
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Hubo un problema al procesar el pago.');
+        console.error('Error al crear la preferencia de pago:', error);
     });
 }
 
-// Evento para el botón de checkout
-document.getElementById('checkout-btn').addEventListener('click', () => {
+// Al hacer clic en "Pagar"
+document.getElementById("pagar-btn").addEventListener('click', function () {
     if (cart.length > 0) {
-        createPreference(); // Crear la preferencia de pago
+        createPreference(); // Llamamos a la función para crear la preferencia y realizar el pago
     } else {
-        alert('El carrito está vacío.');
+        alert('El carrito está vacío. Agrega productos antes de pagar.');
     }
 });

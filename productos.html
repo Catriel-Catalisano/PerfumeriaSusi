@@ -76,15 +76,33 @@
 
         </section>
         
-
+        <section id="envio">
+            <h2>Calcular Costo de Envío</h2>
+            <form id="envio-form">
+                <label for="ubicacion">Selecciona tu ubicación:</label>
+                <select id="ubicacion" required>
+                    <option value="" disabled selected>Elige tu ubicación</option>
+                    <option value="buenos-aires">Buenos Aires</option>
+                    <option value="cordoba">Córdoba</option>
+                    <option value="rosario">Rosario</option>
+                    <!-- Agregar más opciones según sea necesario -->
+                </select>
+                <button type="submit">Calcular Envío</button>
+            </form>
+            <div id="costo-envio">
+                <p>Costo de Envío: $<span id="precio-envio">0</span></p>
+            </div>
+            <button id="actualizar-carrito">Actualizar Carrito</button>
+        </section>
+        
         <section id="carrito" class="section">
             <h1>Carrito de Compras</h1>
             <div id="cart-items"></div>
-<p>Total de productos: <span id="total-items"></span></p>
-<p>Total a pagar: $<span id="total-price"></span></p>
-<button id="checkout-btn">Pagar</button>
-            <button id="checkout-btn">Pagar con Mercado Pago</button>
+            <p>Total de productos: <span id="total-items"></span></p>
+            <p>Total a pagar: $<span id="total-price"></span></p>
+            <button id="checkout-btn">Pagar con Mercado Pago</button> <!-- Solo un botón de pago -->
         </section>
+        
     </main>
 
     <script src="https://sdk.mercadopago.com/js/v2"></script>
