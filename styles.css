@@ -415,7 +415,7 @@ h1 {
 /* Footer general styling */
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     background-color: #000000;
