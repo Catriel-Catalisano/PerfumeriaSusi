@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
@@ -190,14 +191,9 @@ header nav ul li a {
     outline: none;
 }
 
-
-
-
 h1 {
     color: #333;
 }
-
-
 
 .product-list {
     display: flex;
@@ -242,6 +238,7 @@ h1 {
     cursor: pointer;
     margin-top: 20px;
 }
+
 /* Estilo para la sección de productos */
 #productos {
     background-color: #f5f5f5;
@@ -341,6 +338,7 @@ h1 {
 .product-card button:focus {
     outline: none;
 }
+
 /* Estilos generales del footer */
 #footer {
     background-color: #000000;
@@ -400,5 +398,26 @@ h1 {
     
     .footer-social, .footer-contact {
         margin-bottom: 20px;
+    }
+
+    /* Ajustes en el carrusel */
+    #image-carousel {
+        width: 90%;
+        height: 200px;
+    }
+
+    /* Ajustes en las tarjetas de productos */
+    .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    /* Ajustes en las secciones de carrito y productos */
+    #carrito, #productos {
+        padding: 20px;
+    }
+
+    /* Ajustes en los botones */
+    .contact-form button, .product-card button {
+        width: 100%;
     }
 }
