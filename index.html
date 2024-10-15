@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header con navegación -->
     <header>
         <nav>
             <ul>
@@ -17,46 +18,44 @@
         </nav>
     </header>
 
+    <!-- Carrusel de imágenes -->
+    <div id="image-carousel">
+        <img src="LOGO.jfif" alt="Perfume 1" />
+        <img src="LOGO 2.jfif" alt="Perfume 2" />
+    </div>
 
-        <div id="image-carousel">
-                <img src="LOGO.jfif" alt="Perfume 1" />
-                <img src="LOGO 2.jfif" alt="Perfume 2" />
-            </div>      
-
-    
+    <!-- Sección de contacto -->
     <section class="contact" id="contacto">
         <h2>Contáctanos</h2>
         <form class="contact-form">
-            <input type="text" placeholder="Tu Nombre">
-            <input type="email" placeholder="Tu Email">
-            <textarea placeholder="Tu Mensaje"></textarea>
-            <button>Enviar</button>
+            <input type="text" placeholder="Tu Nombre" required>
+            <input type="email" placeholder="Tu Email" required>
+            <textarea placeholder="Tu Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
         </form>
     </section>
 
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="script.js"></script>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="https://www.instagram.com/perfumeria.su" target="_blank">
+                    <i class="fab fa-instagram"></i> Seguinos en Instagram 
+                </a>
+            </div>
+            <div class="footer-contact">
+                <p><strong>Direcciones:</strong></p>
+                <p>Sarmiento 1695, Gerli, Avellaneda, Buenos Aires</p>
+                <p>Salta 1694, Gerli, Avellaneda, Buenos Aires</p>
+                <p><strong>Teléfono:</strong> 1168061837</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome (para los íconos de redes sociales) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
-<footer>
-<!-- Footer -->
-<footer id="footer">
-    <div class="footer-container">
-        <div class="footer-social">
-            <a href="https://www.instagram.com/perfumeria.su" target="_blank">
-                <i class="fab fa-instagram"></i> Síguenos en Instagram <img src="igpalabra.jpeg" alt="">
-            </a>
-        </div>
-        <div class="footer-contact">
-            <p><strong>Direcciones:</strong></p>
-            <p>Sarmiento 1695, Gerli, Avellaneda, Buenos Aires</p>
-            <p>Salta 1694, Gerli, Avellaneda, Buenos Aires</p>
-            <p><strong>Teléfono:</strong> 1168061837</p>
-        </div>
-    </div>
-</footer>
-
-<!-- Font Awesome (para los íconos de redes sociales) -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="a
-
-</footer>
 </html>
